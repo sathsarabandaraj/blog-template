@@ -1,0 +1,28 @@
+{% assign maxPost = 1 %}
+{% assign counter = 0 %}
+{% for post in site.posts | sort:"date" | reverse %}
+{% assign counter = counter | plus: 1 %}
+<a href="{{ post.url }}">
+    <div class="card">
+        <div class=" row no-gutters">
+            <div class="col-lg-8">
+                <img src="{{ site.baseurl }}/{{ post.img-loc }}" class="img-fluid" alt="'{{ post.title }}' post header image.">
+            </div>
+            <div class="col-lg-4">
+                <div class="card-header">
+                    <p>{{ post.date | date: "%a, %b %d, %Y"}}&nbsp;&nbsp;•&nbsp;{{ post.content | reading_time }}&nbsp;read</p>
+                    <h1 calss="card-title" style="font-family: 'Rubik',san-serif;">
+                        {{ post.title }}
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">{{ post.content | split:'<!--more-->' | first | append: " ...." }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+{% if counter == maxPost %}
+{% break %}
+{% endif %}
+{% endfor %}

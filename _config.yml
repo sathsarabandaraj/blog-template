@@ -1,0 +1,8 @@
+excerpt_separator: <!--more-->
+
+reading_time:
+  words_per_minute: 150
+  translations:
+    about:
+    minute: min
+    minutes: min
